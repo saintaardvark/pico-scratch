@@ -1,0 +1,10 @@
+* Pin diagram
+ | Label | GPIO | Destination                                |
+ |-------+------+--------------------------------------------|
+ |    19 |   14 | wire that I occasionally stick into ground |
+ |    20 |   15 | wire that i occasionally stick into ground |
+
+* What I see
+- as I stick pins into ground, numbers start scrolling
+  - video recorded.
+- this makes sense: the code puts the pins into pull up mode.
