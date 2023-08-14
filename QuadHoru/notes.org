@@ -8,3 +8,20 @@
 - as I stick pins into ground, numbers start scrolling
   - video recorded.
 - this makes sense: the code puts the pins into pull up mode.
+
+* NOW I GET THIS!
+- This is based on original_post_corrected_probably_use_this_one.py
+  - Each time the timer fires, there are two values that get pushed
+    onto fifo: one indicating the state of the two wires, and one
+    indicating how many cycles since the last time it was when a
+    signal was received.
+  - The value of y gets decremented; since it was set to 3, that allows
+    for 4 pairs of 32-bit words to go into the FIFO.
+  - Once y is 0, we set the interrupt and block until it’s serviced.
+    After it is, SM4 goes back to the wait target.
+  - the interrupt handler prints the data, along with how long in ms
+    it's been since the last time the interrupt fired.
+    - That data includes how many times x was decremented.  That * 2
+      == number of clock ticks between label "counter_start" and
+      x_dec.
+- 
