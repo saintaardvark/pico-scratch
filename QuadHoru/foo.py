@@ -1,4 +1,4 @@
-# https://forums.raspberrypi.com/viewtopic.php?t=306064&sid=01111b75f3f4864611b944ba26c707d3de
+# https://forums.raspberrypi.com/viewtopic.php?t=306064&sid=01111b75f3f4864611b944ba26c707d3
 # PIO measure period of 1-PPS input signal on Pin 16, based on
 # https://github.com/raspberrypi/pico-micropython-examples/blob/master/pio/pio_pinchange.py
 

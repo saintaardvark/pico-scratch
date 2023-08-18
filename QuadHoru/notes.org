@@ -1,8 +1,8 @@
 * Pin diagram
- | Label | GPIO | Destination                                |
- |-------+------+--------------------------------------------|
- |    19 |   14 | wire that I occasionally stick into ground |
- |    20 |   15 | wire that i occasionally stick into ground |
+| Label | GPIO | Destination                                |
+|-------+------+--------------------------------------------|
+|    19 |   14 | wire that I occasionally stick into ground |
+|    20 |   15 | wire that i occasionally stick into ground |
 
 * What I see
 - as I stick pins into ground, numbers start scrolling
@@ -24,4 +24,13 @@
     - That data includes how many times x was decremented.  That * 2
       == number of clock ticks between label "counter_start" and
       x_dec.
-- 
+      #+begin_quote
+      Each time through that loop, two 32-bit numbers are pushed into the
+      output buffer: the first one contains two binary flags in the
+      low-order 2 bits showing the captured state of the two input pins, and
+      the second number is a timestamp in units of 10 nanoseconds (two
+      cycles with the SM configured to run at 200 MHz) corresponding to the
+      most recent transition on either of the two inputs.
+      #+end_quote
+- Will definitely need to re-read that thread; the discussion has a
+  lot of corrections that do not make it into the github code.
