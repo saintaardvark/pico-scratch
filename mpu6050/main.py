@@ -1,4 +1,3 @@
-from machine import Pin, I2C
 import utime
 from mpu6050 import MPU6050
 
@@ -42,6 +41,18 @@ class MyMpu(MPU6050):
         """
         mpu.__readByte(0x3A)
 
+if mpu.passed_self_test:
+    print("Self-test passed, here we go!")
+    mpu.start()
+
+while True:
+    print("Waiting...")
+    utime.sleep(60)
+
+    
+
+
+mpu = MyMpu(0, 20, 21, ofs, 2, handler)
 
 mpu = MyMpu(0, 20, 21, ofs, 2, handler)
 
@@ -61,15 +72,6 @@ mpu.__writeByte(0x37, 0x20)
 # IntEnable is 0x38.  Need to set 6th bit.
 mpu.__writeByte(0x38, 0x40)
 
-if mpu.passed_self_test:
-    print("Self-test passed, here we go!")
-    mpu.start()
-
-while True:
-    print("Waiting...")
-    utime.sleep(60)
-
-    
 
 
 # while True:
