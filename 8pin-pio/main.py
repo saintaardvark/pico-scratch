@@ -2,28 +2,42 @@ from machine import Pin
 from time import sleep
 
 
-p = []
 MAX_PINS = 8  # offset by one because pins start at zero
 
-def blink(pin, sleepytime=0.1):
+
+def blink(outp, sleepytime=0.1):
     """Blink pin"""
-    pin.on()
+    outp.on()
     sleep(sleepytime)
-    pin.off()
-    
+    outp.off()
+
+
+def blink_and_check(outp, inp, sleepytime=0.1):
+    """Blink pin and check input"""
+    outp.on()
+    val = inp.value()
+    sleep(sleepytime)
+    outp.off()
+    return val
+
 
 def main():
     """
     Main entry point
     """
-    p = [Pin(i, Pin.OUT) for i in range(0, MAX_PINS)]
+    outputs = [Pin(i, Pin.OUT) for i in range(0, MAX_PINS)]
+    inputs = [Pin(i + 8, Pin.IN) for i in range(0, MAX_PINS)]
 
     while True:
-        for i in p:
-            blink(i)
+        vals = []
+        for o, i in zip(outputs, inputs):
+            vals.append(blink_and_check(o, i))
+
+        print(vals)
 
         sleep(0.2)
-        p.reverse()
+        outputs.reverse()
+        inputs.reverse()
 
 
 if __name__ == "__main__":
