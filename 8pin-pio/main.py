@@ -47,19 +47,14 @@ def blink_and_check(outp, inp, sleepytime=0.1):
 
 
 def main():
-    # paral_sm = StateMachine(0, paral_prog, freq=2000, out_base=Pin(0))
-    # paral_sm.active(1)
+    paral_sm = StateMachine(0, paral_prog, freq=2000, out_base=Pin(0))
+    paral_sm.active(1)
 
-    sm = StateMachine(0, pioblink, freq=2000, set_base=Pin(0))
-    sm.active(1)
-    sleep(5)
-    sm.active(0)
-
-    # while True:
-    #     for i in range(500):
-    #         paral_sm.put(i)
-    #         print(i)
-    #         sleep(0.5)
+    while True:
+        for i in range(500):
+            paral_sm.put(i)
+            print(i)
+            sleep(0.5)
 
 
 # def main():
