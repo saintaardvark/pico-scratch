@@ -19,6 +19,9 @@ def main():
             print(f"i = {i}")
             r = paral_read_sm.get()
             print(f"Read: {r}")
+            # We're reading in 8 bits; the TX buffer is 32 bits;
+            # shift by 24.
+            print(f"Shift: {r >> 24}")
             sleep(0.5)
 
 
