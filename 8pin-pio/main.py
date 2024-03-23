@@ -14,7 +14,7 @@ def main():
     paral_read_sm.active(1)
 
     while True:
-        for i in range(500):
+        for i in range(256):
             paral_sm.put(i)
             print(f"i = {i}")
             r = paral_read_sm.get()
