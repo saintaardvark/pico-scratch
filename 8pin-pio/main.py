@@ -20,7 +20,7 @@ def pioblink():
     wrap()
 
 @asm_pio(
-    out_init=(PIO.OUT_LOW) * 8,
+    out_init=(PIO.OUT_HIGH,) * 8,
     out_shiftdir=PIO.SHIFT_RIGHT,
     autopull=True,
     pull_thresh=16,
