@@ -12,16 +12,21 @@ def main():
     paral_read_sm = StateMachine(1, paral_read, freq=2000, in_base=Pin(8))
     paral_sm.active(1)
     paral_read_sm.active(1)
-
+    last = -1
     while True:
         for i in range(256):
             paral_sm.put(i)
             print(f"i = {i}")
             r = paral_read_sm.get()
-            print(f"Read: {r}")
+            r = r << 24
+            if last == -1:
+                last = r
+            # print(f"Read: {r}")
             # We're reading in 8 bits; the TX buffer is 32 bits;
             # shift by 24.
-            print(f"Shift: {r >> 24}")
+            # print(f"Shift: {r >> 24}")
+            if last != r:
+                print(r)
             sleep(0.5)
 
 
