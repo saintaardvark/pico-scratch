@@ -18,16 +18,17 @@ def main():
     clock_sm.active(1)
     last = -1
     while True:
-        r = paral_read_sm.get()
+        r = read_sm.get()
+        c = clock_sm.get()
         r = r << 24
         if last == -1:
             last = r
-        # print(f"Read: {r}")
+        print(f"Read: {r=}, {c=}, {(r>>24)=}")
         # We're reading in 8 bits; the TX buffer is 32 bits;
         # shift by 24.
         # print(f"Shift: {r >> 24}")
-        if last != r:
-            print(r)
+        # if last != r:
+        #     print(r)
         sleep(0.5)
 
 

@@ -19,12 +19,17 @@ def clock():
     jmp(pin, "PUSH")
     jmp(x_dec, "WAIT_FOR_P1_HIGH")
     label("PUSH")
-    in(x, 32)
+    in_(x, 32)
     push()
     jmp(x_dec, "WAIT_FOR_P1_HIGH")
 
+
 @asm_pio(
-    set_init=PIO.OUT_LOW, in_shiftdir=PIO.SHIFT_RIGHT, autopush=True, push_thresh=16
+    set_init=PIO.OUT_LOW,
+    in_shiftdir=PIO.SHIFT_RIGHT,
+    sideset_init=PIO.OUT_LOW,
+    autopush=True,
+    push_thresh=16,
 )
 def paral_read():
     """
