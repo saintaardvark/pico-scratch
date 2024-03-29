@@ -9,7 +9,7 @@ from rp2 import PIO, StateMachine, asm_pio
     # should all be like this".
     out_init=(PIO.OUT_HIGH,) * 8,
     out_shiftdir=PIO.SHIFT_RIGHT,
-    autopull=True,
+    autopush=True,
     pull_thresh=16,
 )
 def clock():
@@ -20,7 +20,6 @@ def clock():
     jmp(x_dec, "WAIT_FOR_P1_HIGH")
     label("PUSH")
     in_(x, 32)
-    push()
     jmp(x_dec, "WAIT_FOR_P1_HIGH")
 
 

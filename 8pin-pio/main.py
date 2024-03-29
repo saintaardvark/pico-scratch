@@ -23,7 +23,14 @@ def main():
         r = read_sm.get()
         c = clock_sm.get()
         if last == -1:
-            last = c
+            last = c # Hm, this is more like "time since first high pin"
+
+        # Currently, the frequency is 2000Hz.  In clock(), the pin is
+        # checked every two instructions (the length of the
+        # "WAIT_FOR_P1_HIGH" routine).  Setting aside the instructions
+        # in the "PUSH" routine, that means the number we read from
+        # the clock is the number of milliseconds elapsed: 2000 Hz / 2
+        # = 1000 Hz, or 1 millisecond.
         rzf = "{:08b}".format(r >> RIGHT_SHIFT)
         print(f"Read: {r=}, {(last-c)=}, {rzf=}")
         sleep(1.0)
