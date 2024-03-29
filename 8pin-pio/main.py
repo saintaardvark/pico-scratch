@@ -9,6 +9,7 @@ JMP_PIN = Pin(8)
 # We're reading in 8 bits; the TX buffer is 32 bits;
 RIGHT_SHIFT = 24
 
+
 def main():
     read_sm = StateMachine(
         0, paral_read, freq=2000, in_base=Pin(0), sideset_base=JMP_PIN
@@ -23,7 +24,8 @@ def main():
         c = clock_sm.get()
         if last == -1:
             last = c
-        print(f"Read: {r=}, {(last-c)=}, {bin(r >> RIGHT_SHIFT)=}")
+        rzf = "{:08b}".format(r >> RIGHT_SHIFT)
+        print(f"Read: {r=}, {(last-c)=}, {rzf=}")
         sleep(1.0)
 
 
