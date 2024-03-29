@@ -6,7 +6,8 @@ from paral import clock, paral_read
 
 MAX_PINS = 8  # offset by one because pins start at zero
 JMP_PIN = Pin(8)
-
+# We're reading in 8 bits; the TX buffer is 32 bits;
+RIGHT_SHIFT = 24
 
 def main():
     read_sm = StateMachine(
@@ -20,16 +21,10 @@ def main():
     while True:
         r = read_sm.get()
         c = clock_sm.get()
-        r = r << 24
         if last == -1:
-            last = r
-        print(f"Read: {r=}, {c=}, {(r>>24)=}")
-        # We're reading in 8 bits; the TX buffer is 32 bits;
-        # shift by 24.
-        # print(f"Shift: {r >> 24}")
-        # if last != r:
-        #     print(r)
-        sleep(0.5)
+            last = c
+        print(f"Read: {r=}, {(last-c)=}, {bin(r >> RIGHT_SHIFT)=}")
+        sleep(1.0)
 
 
 if __name__ == "__main__":
