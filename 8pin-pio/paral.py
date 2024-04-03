@@ -37,8 +37,8 @@ def paral_read():
     Read in parallel
     """
     mov(y, pins)
-    label("main_loop")
-    mov(x, pins)
+    wrap_target()
+    mov(x, pins).side(0)
     # The side set is the signal to the clock routine that we've just
     # seen a pin change.  The clock routine may take up to 3 cycles to
     # notice this, so we don't turn it off until we return from this
@@ -47,4 +47,5 @@ def paral_read():
     jmp("main_loop")
     label("move_out")
     in_(x, 8)
-    mov(y, x).side(0)
+    mov(y, x)
+    wrap()
