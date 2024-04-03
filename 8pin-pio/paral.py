@@ -10,7 +10,7 @@ from rp2 import PIO, StateMachine, asm_pio
     out_init=(PIO.OUT_HIGH,) * 8,
     out_shiftdir=PIO.SHIFT_RIGHT,
     autopush=True,
-    push_thresh=16,
+    push_thresh=32,
 )
 def clock():
     set(x, 0)
@@ -28,7 +28,7 @@ def clock():
     in_shiftdir=PIO.SHIFT_RIGHT,
     sideset_init=PIO.OUT_LOW,
     autopush=True,
-    push_thresh=16,
+    push_thresh=8,
 )
 def paral_read():
     """
