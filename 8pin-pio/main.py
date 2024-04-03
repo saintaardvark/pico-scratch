@@ -23,7 +23,7 @@ def main():
         r = read_sm.get()
         c = clock_sm.get()
         if last == -1:
-            last = c # Hm, this is more like "time since first high pin"
+            last = c  # Hm, this is more like "time since first high pin"
 
         # Currently, the frequency is 2000Hz.  In clock(), the pin is
         # checked every two instructions (the length of the
