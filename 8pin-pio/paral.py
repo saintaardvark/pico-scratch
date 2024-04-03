@@ -14,6 +14,11 @@ from rp2 import PIO, StateMachine, asm_pio
     fifo_join=PIO.JOIN_RX,  # This gives us 8 words in the RX buffer
 )
 def clock():
+    """
+    Clock routine.
+
+    Not bad: x_dec happens every 2 instructions.
+    """
     set(x, 0)
     label("WAIT_FOR_P1_HIGH")
     # Wait for pin1 to be high
