@@ -9,12 +9,12 @@ JMP_PIN = Pin(8)
 # We're reading in 8 bits; the TX buffer is 32 bits;
 RIGHT_SHIFT = 24
 
+FREQ = 2000 # Original
+# FREQ = 100_000_000
 
 def main():
-    read_sm = StateMachine(
-        0, paral_read, freq=2000, in_base=Pin(0), sideset_base=JMP_PIN
-    )
-    clock_sm = StateMachine(1, clock, freq=2000, jmp_pin=JMP_PIN)
+    read_sm = StateMachine(0, paral_read, freq=FREQ, in_base=Pin(0), sideset_base=JMP_PIN)
+    clock_sm = StateMachine(1, clock, freq=FREQ, jmp_pin=JMP_PIN)
     # TODO: set both active at once
     read_sm.active(1)
     clock_sm.active(1)
