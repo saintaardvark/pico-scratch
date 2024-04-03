@@ -46,6 +46,7 @@ def paral_read():
     jmp(x_not_y, "move_out").side(1)
     jmp("main_loop")
     label("move_out")
+    in_(x, 8)
     push().side(0)
     mov(y, x)
     jmp("main_loop").side(0)
