@@ -20,7 +20,9 @@ def main():
     clock_sm.active(1)
     last = -1
     while True:
+        print("Reading r...")
         r = read_sm.get()
+        print("Reading clock...")
         c = clock_sm.get()
         if last == -1:
             last = c  # Hm, this is more like "time since first high pin"
@@ -32,8 +34,9 @@ def main():
         # the clock is the number of milliseconds elapsed: 2000 Hz / 2
         # = 1000 Hz, or 1 millisecond.
         rzf = "{:08b}".format(r >> RIGHT_SHIFT)
-        print(f"Read: {r=}, {(last-c)=}, {rzf=}")
-        sleep(1.0)
+
+        print(f"{(last-c)=}, {rzf=}")
+        # sleep(1.0)
 
 
 if __name__ == "__main__":
