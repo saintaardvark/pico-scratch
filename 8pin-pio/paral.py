@@ -11,6 +11,7 @@ from rp2 import PIO, StateMachine, asm_pio
     out_shiftdir=PIO.SHIFT_RIGHT,
     autopush=True,
     push_thresh=32,
+    fifo_join=PIO.JOIN_RX,  # This gives us 8 words in the RX buffer
 )
 def clock():
     set(x, 0)
@@ -29,6 +30,7 @@ def clock():
     sideset_init=PIO.OUT_LOW,
     autopush=True,
     push_thresh=8,
+    fifo_join=PIO.JOIN_RX,  # This gives us 8 words in the RX buffer
 )
 def paral_read():
     """
